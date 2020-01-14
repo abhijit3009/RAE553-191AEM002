@@ -71,7 +71,7 @@ class Item(Resource):
         #query the database
         query = "INSERT INTO {table} VALUES (?,?)".format(table=cls.TABLE_NAME)
         cursor.execute(query, (item['name'],item['price']))
-        connection.commit() #commit and close the db access
+        connection.commit() 
         connection.close()
         return {'message':'Item Added'}   
 
