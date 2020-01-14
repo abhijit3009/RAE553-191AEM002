@@ -3,7 +3,7 @@ from flask_restful import Resource, reqparse
 
 class UserRegister(Resource):
     parser = reqparse.RequestParser()
-    #adding price as argument
+    
     parser.add_argument('username', type=str,required=True, help='This field cannot be left blank')
     parser.add_argument('password', type=str,required=True, help='This field cannot be left blank')
 
@@ -34,32 +34,30 @@ class User:
         connection  = sqlite3.connect('data.db')
         cursor =   connection.cursor()
 
-        query = "SELECT * FROM users WHERE username=?" #select every row in the database but uses only the data that matches parameter
-        result = cursor.execute(query, (username,)) #since a single value tuple is necessary
-        row = result.fetchone() #selects the first row out of the results set
+        query = "SELECT * FROM users WHERE username=?" #select every row in the database 
+        result = cursor.execute(query, (username,)) 
+        row = result.fetchone() #selects the first row 
         if row:
-            #user = cls(row[0], row[1], row[2]) those match an id, username (index 1) and password (index2 ) respectfully
             user = cls(*row)
         else:
-            user = None # None is when object doesnt exist
+            user = None # 
         
         connection.close()
         return user
-    #verify the id exists in database
+    #verify the id which is in database
     @classmethod
     def find_by_id(cls, id):
         connection  = sqlite3.connect('data.db')
         cursor =   connection.cursor()
 
-        query = "SELECT * FROM users WHERE id=?" #select every row in the database with given id
-        result = cursor.execute(query, (id,)) #since a single value tuple is necessary
-        row = result.fetchone() #selects the first row out of the results set
+        query = "SELECT * FROM users WHERE id=?" #select every row in the database 
+        result = cursor.execute(query, (id,)) 
+        row = result.fetchone() #selects the first row 
         if row:
-            #user = cls(row[0], row[1], row[2]) those match an id,
-            #  username (index 1) and password (index2 ) respectfully
+            
             user = cls(*row)
         else:
-            user = None # None is when object doesnt exist
+            user = None 
         
         connection.close()
         return user
