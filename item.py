@@ -5,7 +5,7 @@ import sqlite3
 
 # item and itemList is created as Resource class
 # Resource item definition
-# for GET and DELETE method, verifying if the  value exists.
+# for GET and DELETE method, verification if the  value exists.
 
 
 class Item(Resource):
